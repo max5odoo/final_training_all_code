@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="school_wizard_send_msg_window">
+            <field name="name">wizard.send.msg.window</field>
+            <field name="model">wizard.send_msg</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="attchment" widget="image"/>
+                            <field name="message_body"/>
+                        </group>
+                        <footer>
+                            <button type="object" name="send_msg" string="Submit" class="btn-primary"/>
+                            <button class="btn-secondary" special="cancel" string="Cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="school_send_msg_wizard_action">
+            <field name="name">wizard.send.msg.action.window</field>
+            <field name="res_model">wizard.send_msg</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+          
+        </record>
+    </data>
+</odoo>

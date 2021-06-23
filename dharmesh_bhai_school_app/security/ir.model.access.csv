@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_school_app_school_app,student.detail,model_student_detail,base.group_user,1,1,1,1
+access_school_app_course,course.detail,model_course_detail,base.group_user,1,1,1,1
+access_school_app_professor,professor.detail,model_professor_detail,base.group_user,1,1,1,1
+access_school_app_wizard,wizard.send_msg,model_wizard_send_msg,base.group_user,1,1,1,1
+access_school_app_product,acess_school_product,model_product_calaloge,base.group_user,1,1,1,1
+access_school_app_product_line,acess_school_product_line,model_product_calaloge_lines,base.group_user,1,1,1,1

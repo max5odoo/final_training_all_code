@@ -1,0 +1,118 @@
+<odoo>
+    <data>
+        <template id="portal_sale_order_view" name="order view">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">So Order</t>
+                </t>
+                <t t-if="not so_ref">
+                    <p>There are currently no order for your account.</p>
+                </t>
+                <div class="card text-left">
+                    <div class="card-header">
+                        <span t-field="so_ref.name"/>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h2>List Sales Orders</h2>
+                    <br/>
+                    <br/>
+                    <h4 class="card-title">
+                       Sale Order :
+                        <span t-field="so_ref.name"/>
+                    </h4>
+                    <p class="card-text">Customer :
+                        <span t-esc="so_ref.partner_id.name"/>
+                    </p>
+                    <p class="card-text">Customer Address :
+                        <span t-esc="so_ref.partner_id.street"/>
+,
+                        <span t-esc="so_ref.partner_id.state_id.name"/>
+,
+                        <span t-esc="so_ref.partner_id.country_id.name"/>
+                    </p>
+                    <p class="card-text">Delivery Address :
+                        <span t-esc="so_ref.partner_invoice_id.street"/>
+,
+                        <span t-esc="so_ref.partner_invoice_id.state_id.name"/>
+,
+                        <span t-esc="so_ref.partner_invoice_id.country_id.name"/>
+                    </p>
+                    <p class="card-text">Billing Address :
+                        <span t-esc="so_ref.partner_shipping_id.street"/>
+,
+                        <span t-esc="so_ref.partner_shipping_id.state_id.name"/>
+,
+                        <span t-esc="so_ref.partner_shipping_id.country_id.name"/>
+                    </p>
+                    <h3>
+                        Order Lines:
+                    </h3>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Discription</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Taxes</th>
+                                <th scope="col" class="text-right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="so_ref.order_line" t-as="order_lines">
+                                <tr>
+                                    <td>
+                                        <span t-esc="order_lines.product_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order_lines.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order_lines.product_uom_qty"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order_lines.price_unit"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="order_lines.tax_id.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="order_lines.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                        </tbody>
+
+                        <tfoot>
+                            <tr class="text-right">
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <hr/>
+                                Sub Total :
+                                    <br/>
+                                  Total :
+                                </td>
+                                <td>
+                                    <hr/>
+                                    <span t-esc="so_ref.amount_untaxed"/>
+                                    <br/>
+                                    <span t-esc="so_ref.amount_total"/>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <h5>Sales Person :
+                        <span t-esc="so_ref.user_id.name"/>
+                    </h5>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

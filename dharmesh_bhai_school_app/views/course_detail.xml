@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="school_course_tree_view">
+            <field name="name">school_app_course_tree_view</field>
+            <field name="model">course.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="hendler" widget="handle"/>
+                    <field name="course_name" />
+                    <field name="course_length"/>
+                    <field name="course_amount"/>
+                    <field name="course_active"/>
+                </tree>
+            </field>
+        </record>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="school_course_coursre_form_view">
+            <field name="name">school_app_course_from_view</field>
+            <field name="model">course.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <h1>Course Detail</h1>
+                        <group >
+
+                            <group>
+                                <separator string="Detail" />
+                                <field name="course_name"/>
+                                <field name="course_length"/>
+                                <field name="course_amount"/>
+                            </group>
+                            <group>
+                                <separator string="Status" />
+                                <field name="course_active"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="school_action_window_courses">
+            <field name="name">Course</field>
+            <field name="res_model">course.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="school_corner" id="school_app.menu_root_student"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="course" id="school_app_course" parent="menu_root_student" action="school_action_window_courses"/>
+
+    </data>
+</odoo>

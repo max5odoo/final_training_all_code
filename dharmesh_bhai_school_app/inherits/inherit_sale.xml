@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="school_sale_updates_view">
+            <field name="name">school.sale.update.view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="age"></field>
+                </xpath>
+                <xpath expr="//notebook//page[@name='other_information']//div[hasclass('o_row')]" position="after">
+                    <field name="student_id"></field>
+                </xpath>
+                <xpath expr="//group[2]" position="inside">
+                    <field name="gender"></field>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]//button[@name='preview_sale_order']" position="before">
+                    <button class="oe_stat_button" name="%(school_app.school_action_window_courses)d" type="action" icon="fa-bars">
+                        <field name="courses_count" string="Courses" widget="statinfo"/>
+                    </button>
+                </xpath>
+                <field name="fiscal_position_id" position="replace">
+                    <field name="is_active"/>
+                </field>
+                <!-- product task -->
+                <xpath expr="//field[@name='gender']" position="after">
+                    <field name="products_id"></field>
+                    <field name="rel_search"></field>
+                </xpath>
+                <xpath expr="//page[@name='order_lines']//tree//field[@name='product_id']" position="before">
+                    <field name="hi"/>
+                    <field name="procat_line_ids"  context="{'cataloge_name': parent.products_id}" attrs="{'column_invisible': [('parent.products_id', '=', False)]}" />
+                </xpath>
+                <!-- product task end -->
+                <field name="payment_term_id" position="attributes">
+                    <attribute name="required">1</attribute>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="school_sale_search_view_update">
+            <field name="name">school.sale.search.view.update</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='draft']" position="after">
+                    <separator/>
+                    <filter string="Male" name="gender" domain="[('gender', '=','male')]"/>
+                    <separator/>
+                </xpath>
+                <xpath expr="//search" position="inside">
+                    <separator/>
+                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+<!-- other referance -->
+<!-- <xpath expr='//form' position='inside'> -->

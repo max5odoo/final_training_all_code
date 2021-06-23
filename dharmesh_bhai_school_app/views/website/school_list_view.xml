@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <template id="school_list_view">
+            <t t-call="portal.portal_layout">
+                <button id="data_get" onclick="get_data()">Get Data</button>
+                <table border="1">
+                    <thead>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>Mobile No.</th>
+                        <th>Email Id</th>
+                    </thead>
+                    <tbody id="tbody">
+                        
+                    </tbody>
+                </table>
+            </t>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="/school_app/static/src/js/student_ajax.js"></script>
+        </template>
+    </data>
+</odoo>

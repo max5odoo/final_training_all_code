@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <act_window name="Professor" id="update_professor_action" res_model="professor.detail" binding_model="student.detail" binding_views="form" view_mode="tree,form" domain="" />
+    </data>
+    <!--second method-->
+    <record id="Course" model="ir.actions.act_window">
+        <field name="name">Go to course</field>
+        <field name="res_model">course.detail</field>
+        <field name="view_id" ref="school_course_tree_view"/>
+        <field name="view_mode">tree</field>
+        <field name="binding_model_id" ref="model_student_detail"/>
+        <field name="binding_view_types">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

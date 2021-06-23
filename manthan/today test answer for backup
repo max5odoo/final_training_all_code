@@ -1,0 +1,46 @@
+There many different types of buttons:-
+1)Button type -->object
+       syntax --><button name="open_wizard" string="open wizard" type="object"/>
+      * IN this we have to define the python function .
+
+2)Button type -->action
+       syntax -->  <button name="%(sale.act_res_partner_2_sale_order)d" string="professor" type="action"/>
+       * IN this we call the button on the basis of the action --> Here we pass the reference of record id .
+3)Smart Button ---> This we can put the button on the header of the sheet.
+     syntax --> <header> <div class="oe_button_box" name="button_box">
+                            <field name="is_moderator" invisible="1"/>
+                            <button class="btn oe_stat_button" name="mail.mail_moderation_action" type="action" attrs="{'invisible':[('is_moderator', '=', False)]}" icon="fa-bars" context="{'search_default_channel_id': active_id}">
+                            <field string="Moderation List" name="moderation_count" widget="statinfo"/>
+                            </button>
+                        </div>
+</header>
+
+
+country_id = fields.Many2one('res.country', ' Country')
+ def name_get(self):
+        country_name_gets = []
+        for rec in self:
+            name = f"{rec.country_id.name}/{rec.country_id.code} "
+            country_name_gets.append((rec.id, name)
+        return country_name_gets
+
+
+ @api.model     def set_values(self):         self.env['ir.config_parameter'].sudo().set_param('auth_password_policy.minlength', self.minlength)          super(ResConfigSettings, self).set_values() ----->System Parameter is used to set or get any settings.
+
+
+ t-field -->This is used to access the field which is already there . FOR EXAMPLE --> <t t-foreach="docs" t-as="o"> <div t-field="o.partner_id"</div></t>      2>t-esc--------> this is used when we want to define the condition based defined FOR EXAMPLE ---> <t t-set="current_subtotal" t-value="0"/> <t-esc="current_subtotal"/>
+
+
+  student_id= self.env['student.student'].create({  'invoice_repartition_line_ids': [(0,0, {'name':'manthan',  'email':'m@gmail.com', 'tag_ids': [(4, inv_base_tag.id, 0)]})---------->Here  invoice_repartition_line_ids= fields.Many2many('tasks.tasks', 'student_student_task',  'student_id', 'tasks_id', string='student tasks')
+
+
+
+  def Send_By_Mail(self): return { 'type': 'ir.actions.act_window', 'view_mode': 'form', 'res_model': 'mail.compose.message', 'views': [(False, 'form')],  'view_id': False,'target': 'new', }------------>This will open a wizard of model :-mail.compose.message
+
+
+  products=request.env['stock.move.line'].search([('product_id.type','=','storable'),('sale_price','>',100)])
+
+  from dateutil import relativedelta   start_date=01/01/2021  ------------->start_date + relativedelta(days=-5)
+
+ The best scenario of showing the kanban record drag and drop is in CRM.  *Syntax---> <kanban class="o_kanban_badge" default_group_by="state"></kanban> --------->HERE WE CAN DRAG AND DROP ON THE BASIS OF STATE.
+

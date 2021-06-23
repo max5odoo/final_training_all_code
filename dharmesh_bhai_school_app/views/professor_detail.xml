@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="school_professor_tree_view">
+            <field name="name">school_app_professor_tree_view</field>
+            <field name="model">professor.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="hendler" widget="handle"/>
+                    <field name="professor_name" />
+                    <field name="professor_email"/>
+                    <field name="professor_mobile"/>
+
+                </tree>
+            </field>
+        </record>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="school_professor_form_view">
+            <field name="name">school_app_professor_from_view</field>
+            <field name="model">professor.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <h1>Professor Detail</h1>
+                        <group >
+
+                            <group>
+                                <!-- <separator string="Detail" /> -->
+                                <field name="professor_name"/>
+                                <field name="professor_email"/>
+
+                            </group>
+                            <group>
+                                <field name="professor_mobile"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="school_app_action_window_professor">
+            <field name="name">Professor</field>
+            <field name="res_model">professor.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="school_corner" id="school_app.menu_root_student"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="professor" id="school_app.professor" parent="school_app.menu_root_student" action="school_app_action_window_professor"/>
+        <!--  <menuitem name="Menu 2" id="school_app.menu_2" parent="school_app.menu_root"/>
+-->
+        <!-- actions -->
+        <!--
+    <menuitem name="List" id="school_app.menu_1_list" parent="school_app.menu_1" action="school_app.action_window"/>
+    <menuitem name="Server to list" id="school_app" parent="school_app.menu_2" action="school_app.action_server"/>
+-->
+    </data>
+</odoo>
